@@ -1,3 +1,4 @@
+from views.video_player.video_player import VideoPlayer
 import requests
 
 class MainRequestFunction:
@@ -5,10 +6,9 @@ class MainRequestFunction:
     @staticmethod
     def create_room(url, data):
         try:
-            print(data)
             response = requests.post(url, json=data)
             if response.status_code == 200:
-                print(response.json())
+                VideoPlayer()
             else:
                 return response.status_code
         except requests.exceptions.RequestException as e:
@@ -19,7 +19,7 @@ class MainRequestFunction:
         try:
             response = requests.patch(url, params=query, json=data)
             if response.status_code == 200:
-                print(response.json())
+                VideoPlayer()
             else:
                 return response.status_code
         except requests.exceptions.RequestException as e:
